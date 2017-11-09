@@ -50,7 +50,7 @@ def gettest_model():
     ok = Model([input], [dense])
 
     for layer in ok.layers:
-        print layer
+        print(layer)
 
     return ok
 
@@ -61,7 +61,7 @@ def finemappingVertical(image):
     resized = cv2.resize(image,(66,16))
     resized = resized.astype(np.float)/255
     res= model.predict(np.array([resized]))[0]
-    print "keras_predict",res
+    print("keras_predict",res)
     res  =res*image.shape[1]
     res = res.astype(np.int)
     H,T = res

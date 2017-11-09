@@ -17,8 +17,8 @@ import sys
 import typeDistinguish as td
 
 
-reload(sys)
-sys.setdefaultencoding("utf-8")
+#reload(sys)
+#sys.setdefaultencoding("utf-8")
 
 fontC = ImageFont.truetype("./Font/platech.ttf", 14, 0);
 
@@ -64,7 +64,7 @@ def verticalEdgeDetection(image):
     # img_sobel, CV_8U, 1, 0, 3, 1, 0, BORDER_DEFAULT
     # canny_image  = auto_canny(image)
     flag,thres = cv2.threshold(image_sobel,0,255,cv2.THRESH_OTSU|cv2.THRESH_BINARY)
-    print flag
+    print(flag)
     flag,thres = cv2.threshold(image_sobel,int(flag*0.7),255,cv2.THRESH_BINARY)
     # thres = simpleThres(image_sobel)
     kernal = np.ones(shape=(3,15))
@@ -176,8 +176,8 @@ def RecognizePlateJson(image):
             else:
                 pass
                 # print "不确定的车牌:", res, "置信度:", confidence
-    print jsons
-    print json.dumps(jsons,ensure_ascii=False,encoding="gb2312")
+    print(jsons)
+    print(json.dumps(jsons,ensure_ascii=False,encoding="gb2312"))
 
     return json.dumps(jsons,ensure_ascii=False,encoding="gb2312")
 
@@ -211,13 +211,13 @@ def SimpleRecognizePlate(image):
         cv2.imwrite("./"+str(j)+".jpg",image_gray)
         # cv2.imshow("image",image_gray)
         # cv2.waitKey(0)
-        print "校正",time.time() - t1,"s"
+        print("校正",time.time() - t1,"s")
         # cv2.imshow("image,",image_gray)
         # cv2.waitKey(0)
         t2 = time.time()
         val = segmentation.slidingWindowsEval(image_gray)
         # print val
-        print "分割和识别",time.time() - t2,"s"
+        print("分割和识别",time.time() - t2,"s")
         if len(val)==3:
             blocks, res, confidence = val
             if confidence/7>0.7:
@@ -233,13 +233,13 @@ def SimpleRecognizePlate(image):
 
 
             if confidence>0:
-                print "车牌:",res,"置信度:",confidence/7
+                print("车牌:",res,"置信度:",confidence/7)
             else:
                 pass
 
                 # print "不确定的车牌:", res, "置信度:", confidence
 
-    print time.time() - t0,"s"
+    print(time.time() - t0,"s")
     return image,res_set
 
 

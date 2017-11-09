@@ -88,7 +88,7 @@ def fastDeskew(image):
     image_gray = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
     skew_h,skew_v = skew_detection(image_gray)
 
-    print "校正角度 h ",skew_h,"v",skew_v
+    print("校正角度 h ",skew_h,"v",skew_v)
 
     deskew,M = v_rot(image,int((90-skew_v)*1.5),image.shape,60)
     return deskew,M
