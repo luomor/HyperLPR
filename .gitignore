@@ -1,3 +1,13 @@
+# Editor
+*~
+*.swp
+
+# Build files
+Prj-Linux/lpr/TEST_*
+Prj-Linux/*build*/
+*.pyc
+/Prj-PHP/build
+
 images_rec/*.*
 cache/*.*
 hyperlpr/*.pyc
